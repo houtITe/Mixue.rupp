@@ -1,0 +1,78 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Each user can read and update their own profile document,
+    // but cannot change their own "role" (prevents self-promoting to admin).
+    match /users/{userId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+      allow create: if request.auth != null && request.auth.uid == userId
+                    && request.resource.data.role == "customer";
+      allow update: if request.auth != null && request.auth.uid == userId
+                    && request.resource.data.role == resource.data.role;
+    }
+
+    // Anyone can browse the menu. Only staff/admin accounts can add,
+    // edit, or remove products.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // Staff/admin manage product categories; everyone can read them
+    // (needed for the public menu filter tabs).
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // Staff/admin manage promotions.
+    match /promotions/{promoId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // Anyone can send a contact message (no login required). Only
+    // staff/admin can read, update (mark read), or delete them.
+    match /messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // Reviews are shown publicly; only staff/admin can add or remove
+    // them for now (no public review-submission form yet).
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // A customer can create their own order and read only their own
+    // orders. Staff/admin can read and update (status) every order.
+    match /orders/{orderId} {
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.customerId;
+      allow read: if request.auth != null && (
+        request.auth.uid == resource.data.customerId ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"]
+      );
+      allow update: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+
+    // Site-wide settings (name, contact info, theme, maintenance mode).
+    // Everyone can read them (the public site needs them); only
+    // staff/admin can change them.
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["staff", "admin"];
+    }
+  }
+}
