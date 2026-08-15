@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
-  Github,
-  Linkedin,
   MapPin,
   GraduationCap,
   Code2,
@@ -11,8 +9,6 @@ import {
   Send,
   Award,
   Download,
-  MessageCircle,
-  Music,
 } from "lucide-react";
 import { toast } from "sonner";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -108,10 +104,10 @@ const timeline = [
 ];
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Music, label: "TikTok", href: "#" },
-  { icon: MessageCircle, label: "Telegram", href: "#" },
+  { slug: "github", label: "GitHub", color: "181717", href: "#" },
+  { slug: "linkedin", label: "LinkedIn", color: "0A66C2", href: "#" },
+  { slug: "tiktok", label: "TikTok", color: "000000", href: "#" },
+  { slug: "telegram", label: "Telegram", color: "0088cc", href: "#" },
 ];
 
 function DeveloperPage() {
@@ -181,7 +177,11 @@ function DeveloperPage() {
                   aria-label={s.label}
                   className="grid h-11 w-11 place-items-center rounded-2xl border border-border bg-background hover:bg-primary hover:text-primary-foreground hover:border-primary transition"
                 >
-                  <s.icon className="h-5 w-5" />
+                  <img
+                    src={`https://cdn.simpleicons.org/${s.slug}/${s.color}`}
+                    alt={s.label}
+                    className="h-5 w-5"
+                  />
                 </a>
               ))}
             </div>
