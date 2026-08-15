@@ -59,7 +59,7 @@ const technologies = [
   { name: "C++", slug: "cplusplus", color: "00599C" },
   { name: "Git", slug: "git", color: "F05032" },
   { name: "GitHub", slug: "github", color: "181717" },
-  { name: "VS Code", slug: "visualstudiocode", color: "007ACC" },
+  { name: "VS Code", slug: "vscode", color: "007ACC" },
   { name: "Figma", slug: "figma", color: "F24E1E" },
   { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
   { name: "Vite", slug: "vite", color: "646CFF" },
