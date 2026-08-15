@@ -105,7 +105,7 @@ const timeline = [
 
 const socials = [
   { slug: "github", label: "GitHub", color: "181717", href: "#" },
-  { slug: "linkedin", label: "LinkedIn", color: "0A66C2", href: "#" },
+  { slug: "facebook", label: "Facebook", color: "1877F2", href: "#" },
   { slug: "tiktok", label: "TikTok", color: "000000", href: "#" },
   { slug: "telegram", label: "Telegram", color: "0088cc", href: "#" },
 ];
