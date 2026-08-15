@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import {
   Github,
   Linkedin,
-  Mail,
   MapPin,
   GraduationCap,
   Code2,
   Sparkles,
   Send,
-  Facebook,
   Award,
   Download,
+  MessageCircle,
+  Music,
 } from "lucide-react";
 import { toast } from "sonner";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -110,8 +110,8 @@ const timeline = [
 const socials = [
   { icon: Github, label: "GitHub", href: "#" },
   { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Mail, label: "Email", href: "mailto:chheymenghout@rupp.edu.kh" },
+  { icon: Music, label: "TikTok", href: "#" },
+  { icon: MessageCircle, label: "Telegram", href: "#" },
 ];
 
 function DeveloperPage() {
@@ -191,12 +191,12 @@ function DeveloperPage() {
             <div className="pointer-events-none absolute -z-10 -inset-6 rounded-[3rem] bg-hero opacity-25 blur-3xl" />
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative rounded-[2rem] overflow-hidden bg-card border border-border shadow-elegant -m-10"
+              className="relative rounded-[2rem] overflow-hidden bg-card border border-border shadow-elegant"
             >
               <img
                 src={pf}
                 alt="Chhey Menghout"
-                className="w-full aspect-[4/5] object-cover"
+                className="w-2/3 mx-auto aspect-[4/5] object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/70 to-transparent text-primary-foreground">
                 <p className="font-[Fraunces,serif] text-xl font-black">Chhey Menghout</p>
