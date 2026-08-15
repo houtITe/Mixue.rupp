@@ -17,7 +17,8 @@ import {
 import { toast } from "sonner";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/site/Reveal";
-
+import Cv from "./../../public/Myself/CV Français Simple Moderne Bleu.png";
+import pf from "./../../public/Myself/photo_2026-05-22_13-38-02.jpg";
 export const Route = createFileRoute("/developer")({
   head: () => ({
     meta: [
@@ -193,7 +194,7 @@ function DeveloperPage() {
               className="relative rounded-[2rem] overflow-hidden bg-card border border-border shadow-elegant -m-10"
             >
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+                src={pf}
                 alt="Chhey Menghout"
                 className="w-full aspect-[4/5] object-cover"
               />
@@ -327,13 +328,13 @@ function DeveloperPage() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <button
-            type="button"
-            onClick={() => toast.info("CV download coming soon.")}
+          <a
+            href={Cv}
+            download="Chhey_Menghout_CV.png"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover-lift"
           >
             <Download className="h-4 w-4" /> Download CV
-          </button>
+          </a>
         </div>
       </section>
 
