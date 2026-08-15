@@ -80,6 +80,20 @@ function LoginPage() {
         <button disabled={loading} className={primaryBtn + " disabled:opacity-60"}>
           {loading ? "Signing in..." : "Sign in"}
         </button>
+
+        <div className="mt-6 space-y-3 text-center text-sm text-muted-foreground">
+          <div>
+            Don't have an account?{" "}
+            <Link to="/register" className="font-semibold text-primary hover:underline">
+              Create one
+            </Link>
+          </div>
+          <div>
+            <Link to="/forgot-password" className="text-primary hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+        </div>
       </form>
     </AuthShell>
   );

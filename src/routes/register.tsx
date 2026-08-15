@@ -89,6 +89,20 @@ function RegisterPage() {
         <button disabled={loading} className={primaryBtn + " disabled:opacity-60"}>
           {loading ? "Creating account..." : "Create account"}
         </button>
+
+        <div className="mt-6 space-y-3 text-center text-sm text-muted-foreground">
+          <div>
+            Already have an account?{" "}
+            <Link to="/login" className="font-semibold text-primary hover:underline">
+              Sign in
+            </Link>
+          </div>
+          <div>
+            <Link to="/forgot-password" className="text-primary hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+        </div>
       </form>
     </AuthShell>
   );
