@@ -59,7 +59,7 @@ const technologies = [
   { name: "C++", slug: "cplusplus", color: "00599C" },
   { name: "Git", slug: "git", color: "F05032" },
   { name: "GitHub", slug: "github", color: "181717" },
-  { name: "VS Code", slug: "vscodium", color: "007ACC" },
+  { name: "VS Code", slug: "visualstudiocode", color: "007ACC" },
   { name: "Figma", slug: "figma", color: "F24E1E" },
   { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
   { name: "Vite", slug: "vite", color: "646CFF" },
@@ -95,24 +95,14 @@ const portfolio = [
 
 const timeline = [
   {
-    year: "2023",
-    title: "Started ITE at RUPP",
-    text: "Joined the Institute of Technology and Engineering — began the coding journey with C and Python.",
-  },
-  {
-    year: "2024",
-    title: "Fell in love with the web",
-    text: "Discovered React and Tailwind. Built a dozen side projects. Never looked back.",
-  },
-  {
     year: "2025",
-    title: "First real client",
-    text: "Shipped a full e-commerce site for a local shop. Learned backend, auth, and deploys.",
+    title: "Year 1 at RUPP",
+    text: "Started ITE (Information Technology Engineering) at Royal University of Phnom Penh. Learning web development, databases, and software engineering fundamentals.",
   },
   {
     year: "2026",
     title: "Mixue of RUPP",
-    text: "Designed and built this full-stack brand website end-to-end.",
+    text: "Designed and built this full-stack brand website end-to-end. First real-world project combining React, Firebase, and modern UI design.",
   },
 ];
 
@@ -200,11 +190,11 @@ function DeveloperPage() {
             <div className="pointer-events-none absolute -z-10 -inset-6 rounded-[3rem] bg-hero opacity-25 blur-3xl" />
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative rounded-[2rem] overflow-hidden bg-card border border-border shadow-elegant"
+              className="relative rounded-[2rem] overflow-hidden bg-card border border-border shadow-elegant -m-10"
             >
               <img
-                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&w=900&q=80"
-                alt="Developer working"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+                alt="Chhey Menghout"
                 className="w-full aspect-[4/5] object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/70 to-transparent text-primary-foreground">
@@ -312,43 +302,6 @@ function DeveloperPage() {
         </div>
       </section>
 
-      {/* Portfolio */}
-      <section className="bg-soft">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-          <SectionHeader
-            eyebrow="Portfolio"
-            title="Selected recent work"
-            blurb="A few projects I'm proud of — more in my GitHub."
-          />
-          <StaggerGroup className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {portfolio.map((p) => (
-              <StaggerItem key={p.title}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card-soft"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                      {p.tag}
-                    </p>
-                    <h4 className="mt-1 font-[Fraunces,serif] text-xl font-black">
-                      {p.title}
-                    </h4>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-      </section>
 
       {/* Certificates */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
@@ -376,10 +329,10 @@ function DeveloperPage() {
         <div className="mt-10 text-center">
           <button
             type="button"
-            onClick={() => toast.info("Résumé download coming soon.")}
+            onClick={() => toast.info("CV download coming soon.")}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover-lift"
           >
-            <Download className="h-4 w-4" /> Download résumé (placeholder)
+            <Download className="h-4 w-4" /> Download CV
           </button>
         </div>
       </section>
