@@ -106,7 +106,7 @@ const heroMarqueeImages = [
 function AboutPage() {
   return (
     <div className="overflow-hidden">
-      <section className="relative bg-neutral-900 overflow-hidden min-h-[560px] sm:min-h-[640px] flex items-center">
+      <section className="relative bg-neutral-900 overflow-hidden min-h-screen flex items-center">
         <div aria-hidden className="absolute inset-0 flex h-full">
           <div className="flex h-full w-max animate-marquee">
             {[
@@ -129,7 +129,7 @@ function AboutPage() {
                   // instead of showing a broken-image icon.
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
-                className="h-full w-[300px] sm:w-[420px] shrink-0 object-cover bg-neutral-800"
+                className="h-full w-full shrink-0 object-cover bg-neutral-800"
               />
             ))}
           </div>
