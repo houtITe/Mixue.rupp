@@ -40,7 +40,7 @@ export function StatCounter({
       transition={{ duration: 0.6 }}
       className="text-center"
     >
-      <p className="font-[Fraunces,serif] text-4xl sm:text-5xl font-black text-primary">
+      <p className="font-[Fraunces,serif] text-2xl sm:text-3xl font-black text-primary">
         {prefix}
         {value.toLocaleString()}
         {suffix}
