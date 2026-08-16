@@ -157,7 +157,7 @@ function AppShell({ isAdmin, pathname }: { isAdmin: boolean; pathname: string })
   const { settings } = useSettings();
   const { isStaff } = useAuth();
   const showMaintenance = settings.maintenanceMode && !isAdmin && !isStaff;
-  const hideFooter = pathname === "/wishlist" || pathname === "/cart" || pathname === "/login" || pathname === "/register" || pathname === "/forgot-password";
+  const hideFooter = pathname === "/wishlist" || pathname === "/cart" || pathname === "/login" || pathname === "/register" || pathname === "/forgot-password" || pathname === "/orders" || pathname === "/profile";
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui]">

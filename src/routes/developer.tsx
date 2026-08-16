@@ -196,7 +196,7 @@ function DeveloperPage() {
               <img
                 src={pf}
                 alt="Chhey Menghout"
-                className="w-2/3 mx-auto aspect-[4/5] object-cover"
+                className="w-1/2 mx-auto aspect-[4/5] object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/70 to-transparent text-primary-foreground">
                 <p className="font-[Fraunces,serif] text-xl font-black">Chhey Menghout</p>
