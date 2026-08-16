@@ -5,6 +5,7 @@ import { useProducts } from "@/context/ProductsContext";
 import { useSettings } from "@/context/SettingsContext";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
 import { VideoBackground } from "@/components/site/VideoBackground";
+import { StatCounter } from "@/components/site/StatCounter";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -61,18 +62,11 @@ function HomePage() {
               </Link>
             </div>
 
-            <dl className="mt-12 grid grid-cols-3 gap-4 max-w-md">
-              {[
-                { k: "50+", v: "Signature drinks" },
-                { k: "12k+", v: "Happy customers" },
-                { k: "4.9★", v: "Average rating" },
-              ].map((s) => (
-                <div key={s.v}>
-                  <dt className="font-[Fraunces,serif] text-3xl font-black text-primary">{s.k}</dt>
-                  <dd className="text-xs text-white/70 mt-1">{s.v}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="mt-12 grid grid-cols-3 gap-4 max-w-md">
+              <StatCounter end={50} suffix="+" label="Signature drinks" duration={2000} />
+              <StatCounter end={12000} suffix="+" label="Happy customers" duration={2000} />
+              <StatCounter end={49} suffix="★" label="Average rating" duration={2000} />
+            </div>
           </div>
 
           <div className="hidden lg:block relative">
