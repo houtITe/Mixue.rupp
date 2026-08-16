@@ -82,7 +82,8 @@ function CheckoutPage() {
       clearCart();
       toast.success("Order placed! We'll get started right away.");
       navigate({ to: "/orders" });
-    } catch {
+    } catch (error) {
+      console.error("Order placement error:", error);
       toast.error("Could not place your order. Please try again.");
     } finally {
       setPlacing(false);
