@@ -110,14 +110,15 @@ function AboutPage() {
         <div aria-hidden className="absolute inset-0 flex h-full">
           <div className="flex h-full w-max animate-marquee">
             {[
-              "https://www.wipo.int/documents/d/ip-advantage/images-madrid-system-story-mixue-1_960.png",
-              "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/intro-1769615448.jpg",
-              "https://radii.co/wp-content/uploads/2026/01/radii-chinese-milk-tea-chain-mixue-comes-to-nyc-08.png",
-              "https://www.dairyfoods.com/ext/resources/2025/12/22/Mixue.webp?t=1766415851",
-              "https://www.wipo.int/documents/d/ip-advantage/images-madrid-system-story-mixue-1_960.png",
-              "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/intro-1769615448.jpg",
-              "https://radii.co/wp-content/uploads/2026/01/radii-chinese-milk-tea-chain-mixue-comes-to-nyc-08.png",
-              "https://www.dairyfoods.com/ext/resources/2025/12/22/Mixue.webp?t=1766415851",
+              "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/methodology-1769615449.jpg",
+              "https://imgs.search.brave.com/ZL3p34vSI9Cr2nJWgSaVB18SPLdSiMQW_rf0sDEVHzQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9mb3J0/dW5lLmNvbS9pbWct/YXNzZXRzL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDI1LzA2L0dl/dHR5SW1hZ2VzLTIy/MDI1ODA5MzYtZTE3/NDg4ODI2MzAzODEu/anBnP2Zvcm1hdD13/ZWJwJnc9MTQ0MCZx/PTEwMA",
+              "https://imgs.search.brave.com/w8_uB4l_AaQYq4DG-BepMzWv5hMLAsoiA-02E5HCAr0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9taXh1/bWVudXMub3JnL3dw/LWNvbnRlbnQvdXBs/b2Fkcy9taXh1ZS1z/aW5nYXBvcmUtbWVu/dS13aXRoLXByaWNl/cy11cGRhdGVkLTc2/OHg0MDMud2VicA",
+              "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/final-thoughts-1769616267.jpg",
+              "https://www.foodandwine.com/thmb/mTh2YTGPwk-9v-4XZSac3pG_wAM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/World-Largest-Fast-Food-Chain-Is-Finally-in-the-US-FT-DGTL0326-Group-8d1a25fec39f404d8a65ebc4b60e5f5e.jpg",
+              "https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/radii.co/2026/01/radii-chinese-milk-tea-chain-mixue-comes-to-nyc-00.png/w=2090,h=1390",
+              "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/methodology-1769615449.jpg",
+              "https://www.foodandwine.com/thmb/mTh2YTGPwk-9v-4XZSac3pG_wAM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/World-Largest-Fast-Food-Chain-Is-Finally-in-the-US-FT-DGTL0326-Group-8d1a25fec39f404d8a65ebc4b60e5f5e.jpg",
+              "https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/radii.co/2026/01/radii-chinese-milk-tea-chain-mixue-comes-to-nyc-00.png/w=2090,h=1390",
             ].map((src, i) => (
               <img
                 key={i}
