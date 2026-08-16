@@ -63,7 +63,7 @@ const technologies = [
 ];
 
 const certificates = [
-  { title: "Meta Front-End Developer", org: "Coursera · 2025", tag: "In progress" },
+  { title: "Meta Front- End Developer", org: "Coursera · 2025", tag: "In progress" },
   { title: "Responsive Web Design", org: "freeCodeCamp · 2024", tag: "Certified" },
   { title: "JavaScript Algorithms", org: "freeCodeCamp · 2024", tag: "Certified" },
   { title: "Google IT Support", org: "Coursera · 2024", tag: "Certified" },
@@ -104,10 +104,10 @@ const timeline = [
 ];
 
 const socials = [
-  { slug: "github", label: "GitHub", color: "181717", href: "#" },
-  { slug: "facebook", label: "Facebook", color: "1877F2", href: "#" },
-  { slug: "tiktok", label: "TikTok", color: "000000", href: "#" },
-  { slug: "telegram", label: "Telegram", color: "0088cc", href: "#" },
+  { slug: "github", label: "GitHub", color: "181717", href: "https://github.com/houtITe" },
+  { slug: "facebook", label: "Facebook", color: "1877F2", href: "https://www.facebook.com/share/1DV396ZKVi/"},
+  { slug: "tiktok", label: "TikTok", color: "000000", href: "https://www.tiktok.com/@do_not_forget_oneday?_r=1&_t=ZS-98v8SQ601nJ" },
+  { slug: "telegram", label: "Telegram", color: "0088cc", href: "https://t.me/MhoutA1" },
 ];
 
 function DeveloperPage() {

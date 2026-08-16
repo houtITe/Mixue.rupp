@@ -91,8 +91,8 @@ function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
           <SectionHeader
             eyebrow="Contact"
-            title="Come say hi 👋"
-            blurb="Questions, orders, catering, feedback — we love hearing from campus."
+            title="Get in touch"
+            blurb="Have questions, orders, catering requests, or feedback? We'd love to hear from you. Reach out anytime."
           />
         </div>
       </section>
