@@ -7,6 +7,7 @@ export type AdminCustomer = {
   name: string;
   email: string;
   phone: string;
+  role: "customer" | "staff" | "admin";
   orders: number;
   spent: number;
   joinedAt: number;
@@ -20,22 +21,19 @@ export function useCustomers() {
     const unsubscribe = onSnapshot(
       collection(db, "users"),
       (snap) => {
-        const list = snap.docs
-          .map((d) => {
-            const data = d.data();
-            return {
-              id: d.id,
-              name: data.name ?? "—",
-              email: data.email ?? "—",
-              phone: data.phone ?? "—",
-              role: data.role ?? "customer",
-              // Real order counts land here once the Orders collection exists (Step 2).
-              orders: 0,
-              spent: 0,
-              joinedAt: data.createdAt?.toMillis?.() ?? 0,
-            };
-          })
-          .filter((u) => u.role === "customer");
+        const list = snap.docs.map((d) => {
+          const data = d.data();
+          return {
+            id: d.id,
+            name: data.name ?? "—",
+            email: data.email ?? "—",
+            phone: data.phone ?? "—",
+            role: data.role ?? "customer",
+            orders: 0,
+            spent: 0,
+            joinedAt: data.createdAt?.toMillis?.() ?? 0,
+          };
+        });
         setCustomers(list);
         setLoading(false);
       },

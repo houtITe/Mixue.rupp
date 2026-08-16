@@ -54,8 +54,7 @@ function RegisterPage() {
     >
       <form onSubmit={onSubmit} className="space-y-4">
         <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Full name</span>
-          <div className="relative mt-1.5">
+          <div className="relative">
             <UserIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Chhey Menghout" className={inputCls + " pl-10"} />
           </div>

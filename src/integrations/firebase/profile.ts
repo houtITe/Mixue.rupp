@@ -29,6 +29,10 @@ export async function updateUserLocation(user: User, lat: number, lng: number) {
   await updateDoc(doc(db, "users", user.uid), { location: { lat, lng } });
 }
 
+export async function updateUserRole(userId: string, role: "customer" | "staff" | "admin") {
+  await updateDoc(doc(db, "users", userId), { role });
+}
+
 export async function changePassword(
   user: User,
   currentPassword: string,

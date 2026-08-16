@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, Mail, Phone } from "lucide-react";
+import { toast } from "sonner";
 import { PageHeader } from "@/components/admin/AdminLayout";
 import { DataTableShell, EmptyState } from "@/components/admin/DataTableShell";
 import { useCustomers } from "@/hooks/use-customers";
 import { formatAdminDateTime } from "@/lib/format-date";
+import { updateUserRole } from "@/integrations/firebase/profile";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +26,7 @@ function CustomersPage() {
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<"orders" | "spent" | "joined">("joined");
   const [page, setPage] = useState(1);
+  const [updatingRole, setUpdatingRole] = useState<string | null>(null);
   const pageSize = 5;
 
   const filtered = useMemo(() => {
@@ -40,6 +43,18 @@ function CustomersPage() {
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
   const current = filtered.slice((page - 1) * pageSize, page * pageSize);
+
+  async function handleRoleChange(userId: string, newRole: "customer" | "staff" | "admin") {
+    setUpdatingRole(userId);
+    try {
+      await updateUserRole(userId, newRole);
+      toast.success(`User role updated to ${newRole}`);
+    } catch {
+      toast.error("Failed to update user role");
+    } finally {
+      setUpdatingRole(null);
+    }
+  }
 
   return (
     <div>
@@ -89,6 +104,7 @@ function CustomersPage() {
               <tr>
                 <th className="py-3 px-4">Customer</th>
                 <th className="py-3 px-4">Contact</th>
+                <th className="py-3 px-4">Role</th>
                 <th className="py-3 px-4">Orders</th>
                 <th className="py-3 px-4">Spent</th>
                 <th className="py-3 px-4">Joined</th>
@@ -108,6 +124,22 @@ function CustomersPage() {
                   <td className="py-3 px-4 text-muted-foreground">
                     <p className="flex items-center gap-1.5"><Mail className="h-3 w-3" /> {c.email}</p>
                     <p className="flex items-center gap-1.5 text-xs"><Phone className="h-3 w-3" /> {c.phone}</p>
+                  </td>
+                  <td className="py-3 px-4">
+                    <Select
+                      value={c.role}
+                      onValueChange={(newRole) => handleRoleChange(c.id, newRole as "customer" | "staff" | "admin")}
+                      disabled={updatingRole === c.id}
+                    >
+                      <SelectTrigger className="w-32">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="customer">Customer</SelectItem>
+                        <SelectItem value="staff">Staff</SelectItem>
+                        <SelectItem value="admin">Admin</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </td>
                   <td className="py-3 px-4 font-semibold">{c.orders}</td>
                   <td className="py-3 px-4 font-semibold">${c.spent.toFixed(2)}</td>
