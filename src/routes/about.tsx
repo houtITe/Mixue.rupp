@@ -107,8 +107,8 @@ function AboutPage() {
   return (
     <div className="overflow-hidden">
       <section className="relative bg-neutral-900 overflow-hidden min-h-screen flex items-center">
-        <div aria-hidden className="absolute inset-0 flex h-full">
-          <div className="flex h-full w-max animate-marquee">
+        <div aria-hidden className="absolute inset-0 flex h-full overflow-hidden">
+          <div className="flex h-full w-max animate-marquee will-change-transform">
             {[
               "https://www.thetakeout.com/img/gallery/the-worlds-biggest-fast-food-chain-arrived-to-the-us-heres-what-we-tried-on-the-menu/methodology-1769615449.jpg",
               "https://imgs.search.brave.com/ZL3p34vSI9Cr2nJWgSaVB18SPLdSiMQW_rf0sDEVHzQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9mb3J0/dW5lLmNvbS9pbWct/YXNzZXRzL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDI1LzA2L0dl/dHR5SW1hZ2VzLTIy/MDI1ODA5MzYtZTE3/NDg4ODI2MzAzODEu/anBnP2Zvcm1hdD13/ZWJwJnc9MTQ0MCZx/PTEwMA",
@@ -124,6 +124,7 @@ function AboutPage() {
                 key={i}
                 src={src}
                 alt=""
+                loading="eager"
                 onError={(e) => {
                   // Hide any image that fails to load (e.g. hotlink-blocked)
                   // instead of showing a broken-image icon.

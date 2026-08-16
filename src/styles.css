@@ -182,12 +182,14 @@
 }
 
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translateX(0); will-change: transform; }
+  to { transform: translateX(-50%); will-change: transform; }
 }
 
 @utility animate-marquee {
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 40s linear infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes fade-in-up {
