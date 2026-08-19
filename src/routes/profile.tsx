@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { User, Mail, Phone, MapPin, LogOut, KeyRound, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -36,6 +36,19 @@ function ProfilePage() {
   const [phone, setPhone] = useState(profile?.phone ?? "");
   const [savingInfo, setSavingInfo] = useState(false);
   const [locating, setLocating] = useState(false);
+  const [lat, setLat] = useState<number | null>(profile?.location?.lat ?? null);
+  const [lng, setLng] = useState<number | null>(profile?.location?.lng ?? null);
+
+  useEffect(() => {
+    if (profile) {
+      if (profile.name) setName(profile.name);
+      if (profile.phone) setPhone(profile.phone);
+      if (profile.location) {
+        setLat(profile.location.lat);
+        setLng(profile.location.lng);
+      }
+    }
+  }, [profile]);
 
   const [currentPw, setCurrentPw] = useState("");
   const [newPw, setNewPw] = useState("");
@@ -59,6 +72,9 @@ function ProfilePage() {
     try {
       if (name.trim() && name !== profile?.name) await updateUserName(user, name.trim());
       if (phone !== (profile?.phone ?? "")) await updateUserPhone(user, phone);
+      if (lat !== null && lng !== null && (lat !== profile?.location?.lat || lng !== profile?.location?.lng)) {
+        await updateUserLocation(user, lat, lng);
+      }
       toast.success("Profile updated!");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not update profile.");
@@ -70,8 +86,10 @@ function ProfilePage() {
   const handleUseLocation = async () => {
     setLocating(true);
     try {
-      const { lat, lng } = await getCurrentLocation();
-      await updateUserLocation(user, lat, lng);
+      const { lat: newLat, lng: newLng } = await getCurrentLocation();
+      setLat(newLat);
+      setLng(newLng);
+      await updateUserLocation(user, newLat, newLng);
       toast.success("Location saved!");
     } catch {
       toast.error("Could not get your location. Please allow location access.");
@@ -163,9 +181,9 @@ function ProfilePage() {
               )}
               Use my current location
             </button>
-            {profile?.location && (
+            {lat !== null && lng !== null && (
               <a
-                href={`https://www.google.com/maps?q=${profile.location.lat},${profile.location.lng}`}
+                href={`https://www.google.com/maps?q=${lat},${lng}`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-xs text-primary underline underline-offset-2"
@@ -174,6 +192,39 @@ function ProfilePage() {
               </a>
             )}
           </div>
+          <div className="grid grid-cols-2 gap-3 mt-3">
+            <div>
+              <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider block">Latitude</label>
+              <input
+                type="number"
+                step="any"
+                className={inputCls + " mt-1"}
+                value={lat ?? ""}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setLat(isNaN(val) ? null : val);
+                }}
+                placeholder="e.g. 11.55"
+              />
+            </div>
+            <div>
+              <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider block">Longitude</label>
+              <input
+                type="number"
+                step="any"
+                className={inputCls + " mt-1"}
+                value={lng ?? ""}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setLng(isNaN(val) ? null : val);
+                }}
+                placeholder="e.g. 104.88"
+              />
+            </div>
+          </div>
+          <p className="mt-1.5 text-[11px] text-muted-foreground">
+            You can drop a pin in Google Maps, copy the coordinates, and paste them above for exact delivery mapping.
+          </p>
         </div>
 
         <button type="submit" disabled={savingInfo} className={btnCls}>

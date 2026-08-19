@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+﻿import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { subscribeToSettings, saveSettings } from "@/integrations/firebase/settings";
 
 export type SiteSettings = {
@@ -107,9 +107,6 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return unsubscribe;
   }, []);
 
-  // Apply admin-chosen brand colors as live CSS variables, the site name
-  // as the document title, the favicon, and the meta description, so a
-  // Settings change takes effect everywhere without a rebuild.
   useEffect(() => {
     const root = document.documentElement;
     if (settings.theme.primary) root.style.setProperty("--primary", settings.theme.primary);

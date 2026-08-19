@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+﻿import { Star, Quote } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const testimonials = [

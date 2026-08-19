@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { IceCream } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
@@ -19,7 +19,6 @@ export function RequireStaff({ children }: { children: ReactNode }) {
     }
   }, [loading, user, isStaff, navigate]);
 
-  // Show loading spinner while auth or profile is loading
   if (loading) {
     return (
       <div className="grid min-h-screen place-items-center bg-muted/30">
@@ -31,12 +30,10 @@ export function RequireStaff({ children }: { children: ReactNode }) {
     );
   }
 
-  // Only render if user is authenticated and has staff/admin role
   if (user && isStaff) {
     return <>{children}</>;
   }
 
-  // This shouldn't render (redirected above), but fallback to loading
   return (
     <div className="grid min-h-screen place-items-center bg-muted/30">
       <div className="flex flex-col items-center gap-3 text-muted-foreground">

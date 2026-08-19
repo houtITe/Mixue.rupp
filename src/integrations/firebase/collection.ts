@@ -1,4 +1,4 @@
-import {
+﻿import {
   collection,
   doc,
   onSnapshot,
@@ -25,7 +25,6 @@ export function subscribeToCollection<T>(
       const list = snap.docs.map((d) => {
         const data = d.data();
         const out: DocumentData = { ...data, id: d.id };
-        // Normalize any Firestore Timestamp fields to epoch millis.
         for (const key of Object.keys(out)) {
           if (out[key]?.toMillis) out[key] = out[key].toMillis();
         }

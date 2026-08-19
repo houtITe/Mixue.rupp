@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from "react";
+﻿import { type ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
@@ -14,7 +14,6 @@ import {
   X,
   Bell,
   Search,
-  IceCream,
   LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -67,7 +66,6 @@ export function AdminLayout({ children }: { children: ReactNode }) {
         osc.start();
         osc.stop(ctx.currentTime + 0.4);
       } catch {
-        // Audio isn't critical — the toast still shows.
       }
     });
     return unsubscribe;
@@ -85,7 +83,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-muted/30 flex">
-      {/* Sidebar */}
+      
       <aside
         className={cn(
           "fixed lg:sticky top-0 left-0 z-40 h-screen w-72 shrink-0 border-r border-border bg-background transition-transform lg:translate-x-0",
@@ -94,9 +92,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
       >
         <div className="flex h-16 items-center justify-between border-b border-border px-5">
           <Link to="/admin" className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-hero shadow-elegant">
-              <IceCream className="h-5 w-5 text-primary-foreground" />
-            </span>
+            <img src="/logo.jpg" alt="Mixue Logo" className="h-9 w-9 rounded-full object-cover shadow-elegant border border-primary/20" />
             <div className="leading-tight">
               <p className="text-sm font-black">Mixue Admin</p>
               <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
@@ -143,7 +139,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
         </nav>
       </aside>
 
-      {/* Overlay */}
+      
       {open && (
         <div
           className="fixed inset-0 z-30 bg-black/40 lg:hidden"
@@ -153,7 +149,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
       )}
 
       <div className="flex flex-1 min-w-0 flex-col">
-        {/* Top nav */}
+        
         <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-border bg-background/85 backdrop-blur px-4 sm:px-6">
           <button
             className="lg:hidden grid h-9 w-9 place-items-center rounded-full hover:bg-accent"

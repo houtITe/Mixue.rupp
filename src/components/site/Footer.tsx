@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Facebook, Instagram, Send, Mail } from "lucide-react";
 import { toast } from "sonner";
@@ -21,7 +21,6 @@ export function Footer() {
       if (!existing.includes(email)) existing.push(email);
       window.localStorage.setItem("mixue.newsletter.v1", JSON.stringify(existing));
     } catch {
-      // Silently fail if localStorage is not available
     }
     toast.success("You're subscribed! Sweet news is on its way.");
     setEmail("");

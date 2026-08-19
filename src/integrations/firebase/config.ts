@@ -1,7 +1,4 @@
-// Firebase app initialization.
-// Fill in the values in your .env file (see .env.example) with the config
-// from Firebase Console → Project settings → General → Your apps → SDK setup.
-import { initializeApp, getApps, getApp } from "firebase/app";
+﻿import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -21,7 +18,6 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
   );
 }
 
-// Avoid re-initializing during hot-reload / SSR.
 export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 export const auth = getAuth(firebaseApp);

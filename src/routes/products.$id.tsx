@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Flame, Sparkles, ShoppingBag, Heart, Minus, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";

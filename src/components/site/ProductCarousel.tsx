@@ -1,4 +1,4 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Product } from "@/data/products";
 import { ProductCard } from "./ProductCard";

@@ -1,4 +1,4 @@
-import {
+﻿import {
   EmailAuthProvider,
   reauthenticateWithCredential,
   updatePassword as fbUpdatePassword,
@@ -8,7 +8,6 @@ import {
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "./config";
 
-// Cambodian mobile numbers: starts with 0, 9-10 digits total.
 export function isValidKhmerPhone(phone: string): boolean {
   return /^0\d{8,9}$/.test(phone.trim());
 }
@@ -44,7 +43,6 @@ export async function changePassword(
   await fbUpdatePassword(user, newPassword);
 }
 
-// Wraps the browser Geolocation API in a promise.
 export function getCurrentLocation(): Promise<{ lat: number; lng: number }> {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {

@@ -1,4 +1,4 @@
-import { useFirestoreCollection } from "@/hooks/use-firestore-collection";
+﻿import { useFirestoreCollection } from "@/hooks/use-firestore-collection";
 import { useProducts } from "@/context/ProductsContext";
 
 export type Category = {

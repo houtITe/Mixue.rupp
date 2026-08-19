@@ -28,6 +28,20 @@ export type Order = {
   createdAt: number;
 };
 
+function stripUndefined<T>(obj: T): T {
+  if (Array.isArray(obj)) {
+    return obj.map(stripUndefined) as unknown as T;
+  }
+  if (obj !== null && typeof obj === "object") {
+    return Object.fromEntries(
+      Object.entries(obj)
+        .filter(([, v]) => v !== undefined)
+        .map(([k, v]) => [k, stripUndefined(v)]),
+    ) as T;
+  }
+  return obj;
+}
+
 export async function placeOrder(data: {
   customerId: string;
   customerName: string;
@@ -36,12 +50,13 @@ export async function placeOrder(data: {
   phone: string;
   location: { lat: number; lng: number } | null;
 }) {
-  await addDoc(collection(db, "orders"), {
+  const clean = stripUndefined({
     ...data,
     payment: "Pending",
     status: "New",
     createdAt: serverTimestamp(),
   });
+  await addDoc(collection(db, "orders"), clean);
 }
 
 export function subscribeToAllOrders(
@@ -63,8 +78,6 @@ export function subscribeToAllOrders(
   );
 }
 
-// Fires `onNewOrder` for each order that arrives AFTER the initial snapshot —
-// used to trigger the POS "ring" alert without firing for existing orders.
 export function subscribeToNewOrders(onNewOrder: (order: Order) => void) {
   const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
   let ready = false;

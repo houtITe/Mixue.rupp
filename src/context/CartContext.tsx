@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -45,11 +46,15 @@ type CartState = {
 
 const CartContext = createContext<CartState | null>(null);
 
-const CART_KEY = "mixue.cart.v1";
-const WISH_KEY = "mixue.wishlist.v1";
+function cartKey(uid: string | undefined) {
+  return uid ? `mixue.cart.v1.${uid}` : null;
+}
+function wishKey(uid: string | undefined) {
+  return uid ? `mixue.wishlist.v1.${uid}` : null;
+}
 
-function safeRead<T>(key: string, fallback: T): T {
-  if (typeof window === "undefined") return fallback;
+function safeRead<T>(key: string | null, fallback: T): T {
+  if (!key || typeof window === "undefined") return fallback;
   try {
     const raw = window.localStorage.getItem(key);
     return raw ? (JSON.parse(raw) as T) : fallback;
@@ -70,6 +75,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const { getProduct } = useProducts();
   const navigate = useNavigate();
 
+  const uid = user?.uid;
+  const prevUidRef = useRef<string | undefined>(uid);
+
   const requireAuth = useCallback(() => {
     if (user) return true;
     toast.error("Please sign in to do that.");
@@ -78,20 +86,32 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [user, navigate]);
 
   useEffect(() => {
-    setCart(safeRead<CartItem[]>(CART_KEY, []));
-    setWishlist(safeRead<string[]>(WISH_KEY, []));
-    setHydrated(true);
-  }, []);
+    const prevUid = prevUidRef.current;
+    prevUidRef.current = uid;
+
+    if (prevUid !== uid) {
+      setHydrated(false);
+      setCart(safeRead<CartItem[]>(cartKey(uid), []));
+      setWishlist(safeRead<string[]>(wishKey(uid), []));
+      setHydrated(true);
+    } else if (!hydrated) {
+      setCart(safeRead<CartItem[]>(cartKey(uid), []));
+      setWishlist(safeRead<string[]>(wishKey(uid), []));
+      setHydrated(true);
+    }
+  }, [uid]);
 
   useEffect(() => {
     if (!hydrated) return;
-    window.localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  }, [cart, hydrated]);
+    const key = cartKey(uid);
+    if (key) window.localStorage.setItem(key, JSON.stringify(cart));
+  }, [cart, hydrated, uid]);
 
   useEffect(() => {
     if (!hydrated) return;
-    window.localStorage.setItem(WISH_KEY, JSON.stringify(wishlist));
-  }, [wishlist, hydrated]);
+    const key = wishKey(uid);
+    if (key) window.localStorage.setItem(key, JSON.stringify(wishlist));
+  }, [wishlist, hydrated, uid]);
 
   const addToCart = useCallback(
     (product: Product, qty = 1, options?: CartOptions) => {

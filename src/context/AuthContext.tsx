@@ -1,4 +1,4 @@
-import {
+﻿import {
   createContext,
   useContext,
   useEffect,
@@ -58,8 +58,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return unsubscribe;
   }, []);
 
-  // Keep the user's Firestore profile (role, name, etc.) in sync in real time,
-  // so role changes made by an admin apply immediately without a re-login.
   useEffect(() => {
     if (!user) {
       setProfile(null);

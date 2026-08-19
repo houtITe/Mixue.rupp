@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 
 export function VideoBackground({
   srcs,
@@ -9,8 +9,6 @@ export function VideoBackground({
   className?: string;
   overlayClassName?: string;
 }) {
-  // Two stacked <video> layers ping-pong so the incoming clip is already
-  // playing underneath before we crossfade its opacity in — no hard cut.
   const [frontIsA, setFrontIsA] = useState(true);
   const [srcA, setSrcA] = useState(srcs[0]);
   const [srcB, setSrcB] = useState(srcs[1] ?? srcs[0]);

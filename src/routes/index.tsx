@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, IceCream, CupSoda, Leaf } from "lucide-react";
 import { useProducts } from "@/context/ProductsContext";
@@ -14,13 +14,11 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const { products } = useProducts();
   const { settings } = useSettings();
-  // Split on the first comma so a custom admin title can still get the
-  // two-line, accent-colored treatment the default copy uses.
   const [titleLead, ...titleRestParts] = settings.hero.title.split(",");
   const titleRest = titleRestParts.join(",").trim();
   return (
     <div className="overflow-hidden">
-      {/* HERO */}
+      
       <section className="relative">
         <VideoBackground srcs={["/hero-bg-1.mp4", "/hero-bg-2.mp4"]} />
 
@@ -65,7 +63,7 @@ function HomePage() {
             <div className="mt-12 grid grid-cols-3 gap-4 max-w-md">
               <StatCounter end={50} suffix="+" label="Signature drinks" duration={2000} />
               <StatCounter end={12000} suffix="+" label="Happy customers" duration={2000} />
-              <StatCounter end={49} suffix="★" label="Average rating" duration={2000} />
+              <StatCounter end={4.9} suffix="★" label="Average rating" duration={2000} />
             </div>
           </div>
 
@@ -80,7 +78,7 @@ function HomePage() {
               <div className="absolute inset-0 bg-linear-to-t from-primary/30 via-transparent to-transparent" />
             </div>
 
-            {/* floating cards */}
+            
             <div className="hidden sm:flex absolute -left-6 top-10 items-center gap-3 glass rounded-2xl px-4 py-3 shadow-card-soft animate-float">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <CupSoda className="h-5 w-5" />
@@ -106,7 +104,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CAROUSELS */}
+      
       <ProductCarousel
         eyebrow="Featured"
         title="Featured favourites"
@@ -120,7 +118,7 @@ function HomePage() {
         products={products.filter((p) => p.bestSeller)}
       />
 
-      {/* BEST SELLER BANNER */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="mx-auto overflow-hidden rounded-3xl shadow-card-soft max-w-3xl">
           <img
@@ -144,7 +142,7 @@ function HomePage() {
         products={products.filter((p) => p.onSale)}
       />
 
-      {/* WHY US */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-2xl">
           <h2 className="font-[Fraunces,serif] text-4xl font-black tracking-tight">
@@ -187,7 +185,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* GALLERY */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-2xl">
           <h2 className="font-[Fraunces,serif] text-4xl font-black tracking-tight">
@@ -216,7 +214,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
         <div className="relative overflow-hidden rounded-[2rem] bg-hero p-10 sm:p-14 text-primary-foreground shadow-elegant">
           <div className="relative z-10 max-w-2xl">

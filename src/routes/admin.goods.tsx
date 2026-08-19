@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Search, Edit, Trash2, Eye, Upload, Download } from "lucide-react";
@@ -373,10 +373,11 @@ function GoodsForm({
   const firstCategory = categories[0]?.name ?? "Bubble Tea";
   const [form, setForm] = useState<Omit<Product, "id" | "createdAt">>(initial ?? emptyForm(firstCategory));
   const [saving, setSaving] = useState(false);
+  const [imageUploading, setImageUploading] = useState(false);
 
   useEffect(() => {
     setForm(initial ?? emptyForm(firstCategory));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setImageUploading(false);
   }, [open, initial]);
 
   return (
@@ -457,14 +458,15 @@ function GoodsForm({
               value={form.image}
               onChange={(url) => setForm({ ...form, image: url })}
               folder="products"
+              onUploadingChange={setImageUploading}
             />
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
-            <Button type="submit" disabled={saving}>
-              {saving ? "Saving…" : initial ? "Save changes" : "Create product"}
+            <Button type="submit" disabled={saving || imageUploading}>
+              {saving ? "Saving…" : imageUploading ? "Uploading image…" : initial ? "Save changes" : "Create product"}
             </Button>
           </DialogFooter>
         </form>

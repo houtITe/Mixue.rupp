@@ -1,4 +1,4 @@
-export type Product = {
+﻿export type Product = {
   id: string;
   name: string;
   category: string;
@@ -22,10 +22,6 @@ export type Product = {
   createdAt?: number;
 };
 
-// One-time starter menu — used only by the "Import starter menu" button in
-// Admin → Products when the live Firestore catalog is empty. The live site
-// and admin panel both read from Firestore (see ProductsContext), not from
-// this array, once products have been imported.
 export const seedProducts: Product[] = [
   {
     id: "classic-vanilla-cone",

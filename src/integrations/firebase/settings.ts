@@ -1,4 +1,4 @@
-import { doc, onSnapshot, setDoc } from "firebase/firestore";
+﻿import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "./config";
 
 const SETTINGS_DOC = "settings/site";

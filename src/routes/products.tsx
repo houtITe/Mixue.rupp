@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,7 +44,7 @@ function ProductsPage() {
 
   return (
     <div>
-      {/* Hero */}
+      
       <section className="relative overflow-hidden">
         <VideoBackground srcs={["/products-hero-bg.mp4"]} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
@@ -62,7 +62,7 @@ function ProductsPage() {
         </div>
       </section>
 
-      {/* Full menu */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="overflow-hidden rounded-3xl shadow-card-soft">
           <img
@@ -74,7 +74,7 @@ function ProductsPage() {
         </div>
       </section>
 
-      {/* Filters */}
+      
       <section className="sticky top-16 z-30 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="relative w-full md:max-w-sm">
@@ -107,7 +107,7 @@ function ProductsPage() {
         </div>
       </section>
 
-      {/* Grid */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
         <div className="mb-6 text-sm text-muted-foreground">
           {" "}

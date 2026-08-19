@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
@@ -13,7 +13,7 @@ import {
 import { toast } from "sonner";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/site/Reveal";
-import Cv from "./../../public/Myself/CV Français Simple Moderne Bleu.png";
+import Cv from "./../../public/Myself/Chey Menghout.pdf";
 import pf from "./../../public/Myself/photo_2026-05-22_13-38-02.jpg";
 export const Route = createFileRoute("/developer")({
   head: () => ({
@@ -42,7 +42,6 @@ const skillBars = [
   { name: "Git & DevOps", level: 82 },
 ];
 
-// Official brand logos via simple-icons CDN — free, no attribution needed.
 const technologies = [
   { name: "HTML5", slug: "html5", color: "E34F26" },
   { name: "CSS3", slug: "css", color: "1572B6" },
@@ -127,7 +126,7 @@ function DeveloperPage() {
 
   return (
     <div className="overflow-hidden">
-      {/* Hero */}
+      
       <section className="relative bg-soft">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
           <Reveal>
@@ -207,7 +206,7 @@ function DeveloperPage() {
         </div>
       </section>
 
-      {/* Skills */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <SectionHeader
           eyebrow="Skills"
@@ -239,7 +238,7 @@ function DeveloperPage() {
         </div>
       </section>
 
-      {/* Technologies grid with brand logos */}
+      
       <section className="bg-soft py-20 border-y border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -271,7 +270,7 @@ function DeveloperPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      
       <section id="projects" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <SectionHeader
           eyebrow="Project timeline"
@@ -303,8 +302,7 @@ function DeveloperPage() {
         </div>
       </section>
 
-
-      {/* Certificates */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <SectionHeader
           eyebrow="Certificates"
@@ -338,7 +336,7 @@ function DeveloperPage() {
         </div>
       </section>
 
-      {/* Contact */}
+      
       <section id="contact" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <SectionHeader
           eyebrow="Get in touch"

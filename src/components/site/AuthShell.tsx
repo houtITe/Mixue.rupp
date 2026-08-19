@@ -1,5 +1,4 @@
-import { Link } from "@tanstack/react-router";
-import { IceCream } from "lucide-react";
+﻿import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 export function AuthShell({
@@ -23,10 +22,8 @@ export function AuthShell({
 
       <div className="w-full max-w-md">
         <div className="glass rounded-3xl border border-border shadow-elegant p-8 sm:p-10 animate-fade-in-up">
-          <Link to="/" className="flex items-center gap-2 justify-center">
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-hero shadow-elegant">
-              <IceCream className="h-5 w-5 text-primary-foreground" />
-            </span>
+          <Link to="/" className="flex flex-col items-center gap-2 justify-center">
+            <img src="/logo.jpg" alt="Mixue Logo" className="h-16 w-16 rounded-full object-cover shadow-elegant border-2 border-primary/20" />
             <span className="text-base font-black">
               Mixue <span className="text-primary">of RUPP</span>
             </span>

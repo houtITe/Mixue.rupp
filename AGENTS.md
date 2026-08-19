@@ -1,4 +1,4 @@
-<!-- LOVABLE:BEGIN -->
+--<!-- LOVABLE:BEGIN -->
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+﻿import { useRef, useState } from "react";
 import { Upload, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { uploadImage } from "@/integrations/firebase/storage";
@@ -8,14 +8,21 @@ export function ImageUploadField({
   onChange,
   folder,
   previewClassName = "h-14 w-14 rounded-lg object-cover",
+  onUploadingChange,
 }: {
   value: string;
   onChange: (url: string) => void;
   folder: string;
   previewClassName?: string;
+  onUploadingChange?: (uploading: boolean) => void;
 }) {
   const [uploading, setUploading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const setUploadingState = (state: boolean) => {
+    setUploading(state);
+    onUploadingChange?.(state);
+  };
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
@@ -23,7 +30,7 @@ export function ImageUploadField({
       toast.error("Please choose an image file.");
       return;
     }
-    setUploading(true);
+    setUploadingState(true);
     try {
       const url = await uploadImage(file, folder);
       onChange(url);
@@ -31,7 +38,7 @@ export function ImageUploadField({
     } catch {
       toast.error("Upload failed. Check Firebase Storage rules are published.");
     } finally {
-      setUploading(false);
+      setUploadingState(false);
     }
   }
 

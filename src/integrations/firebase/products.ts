@@ -1,4 +1,4 @@
-import {
+﻿import {
   collection,
   doc,
   onSnapshot,
@@ -50,7 +50,6 @@ export async function deleteProduct(id: string) {
   await deleteDoc(doc(db, COLLECTION, id));
 }
 
-// One-time bulk import of the starter menu into an empty catalog.
 export async function importSeedProducts(seed: Product[]) {
   const batch = writeBatch(db);
   for (const p of seed) {

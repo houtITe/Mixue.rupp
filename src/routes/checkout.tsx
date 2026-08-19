@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { MapPin, Phone, Loader2, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
@@ -127,8 +127,53 @@ function CheckoutPage() {
               {locating ? <Loader2 className="h-4 w-4 animate-spin" /> : <MapPin className="h-4 w-4" />}
               {location ? "Update my location" : "Use my current location"}
             </button>
-            {location && <span className="text-xs text-primary">Location set ✓</span>}
+            {location && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-primary">Location set ✓</span>
+                <a
+                  href={`https://www.google.com/maps?q=${location.lat},${location.lng}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-primary underline underline-offset-2"
+                >
+                  Verify on map
+                </a>
+              </div>
+            )}
           </div>
+          <div className="grid grid-cols-2 gap-3 mt-3">
+            <div>
+              <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider block">Latitude</label>
+              <input
+                type="number"
+                step="any"
+                className={inputCls + " mt-1"}
+                value={location?.lat ?? ""}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setLocation(isNaN(val) ? null : { lat: val, lng: location?.lng ?? 104.88 });
+                }}
+                placeholder="e.g. 11.55"
+              />
+            </div>
+            <div>
+              <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider block">Longitude</label>
+              <input
+                type="number"
+                step="any"
+                className={inputCls + " mt-1"}
+                value={location?.lng ?? ""}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setLocation(isNaN(val) ? null : { lat: location?.lat ?? 11.55, lng: val });
+                }}
+                placeholder="e.g. 104.88"
+              />
+            </div>
+          </div>
+          <p className="mt-1.5 text-[11px] text-muted-foreground">
+            You can drop a pin in Google Maps, copy the coordinates, and paste them above for exact delivery mapping.
+          </p>
         </div>
 
         <label className="flex items-start gap-3 rounded-xl border border-border p-3 text-sm">

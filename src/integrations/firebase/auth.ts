@@ -1,5 +1,4 @@
-// Thin wrappers around Firebase Auth so route components stay simple.
-import {
+﻿import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -26,8 +25,6 @@ export async function registerWithEmail(name: string, email: string, password: s
   const credential = await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(credential.user, { displayName: name });
 
-  // Create a matching profile document in Firestore so admin/staff pages can
-  // list users, assign roles ("customer" | "staff" | "admin"), etc.
   await setDoc(doc(db, "users", credential.user.uid), {
     name,
     email,
@@ -68,7 +65,6 @@ export async function logout() {
   await signOut(auth);
 }
 
-// Turns Firebase's error codes into short, user-friendly messages.
 export function friendlyAuthError(error: unknown): string {
   const code = (error as { code?: string })?.code ?? "";
   switch (code) {

@@ -1,4 +1,4 @@
-export type AdminGood = {
+﻿export type AdminGood = {
   id: string;
   name: string;
   type: "Drinks" | "Ice Cream";

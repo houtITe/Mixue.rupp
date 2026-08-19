@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Upload, Save } from "lucide-react";
 import { toast } from "sonner";
@@ -18,6 +18,8 @@ function SettingsPage() {
   const { settings, loading, updateSettings } = useSettings();
   const [saving, setSaving] = useState(false);
   const [s, setS] = useState<SiteSettings>(settings);
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [faviconUploading, setFaviconUploading] = useState(false);
 
   useEffect(() => {
     setS(settings);
@@ -74,6 +76,7 @@ function SettingsPage() {
                 onChange={(url) => update("website", { logoUrl: url })}
                 folder="settings"
                 previewClassName="h-14 w-14 rounded-full object-cover"
+                onUploadingChange={setLogoUploading}
               />
             </Field>
             <Field label="Favicon">
@@ -81,6 +84,7 @@ function SettingsPage() {
                 value={s.website.faviconUrl}
                 onChange={(url) => update("website", { faviconUrl: url })}
                 folder="settings"
+                onUploadingChange={setFaviconUploading}
               />
             </Field>
           </div>
@@ -193,9 +197,9 @@ function SettingsPage() {
         </Section>
 
         <div className="lg:col-span-2 flex justify-end">
-          <Button type="submit" disabled={saving || loading} className="gap-1.5">
+          <Button type="submit" disabled={saving || loading || logoUploading || faviconUploading} className="gap-1.5">
             <Save className="h-4 w-4" />
-            {saving ? "Saving…" : "Save all changes"}
+            {saving ? "Saving…" : logoUploading || faviconUploading ? "Uploading image…" : "Save all changes"}
           </Button>
         </div>
       </form>

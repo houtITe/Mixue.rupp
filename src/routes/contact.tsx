@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import {
   Mail,
@@ -86,7 +86,7 @@ function ContactPage() {
 
   return (
     <div>
-      {/* Hero */}
+      
       <section className="bg-soft">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
           <SectionHeader
@@ -97,7 +97,7 @@ function ContactPage() {
         </div>
       </section>
 
-      {/* Info cards */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-10 lg:-mt-14 relative z-10">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {infoCards.map((c, i) => (
@@ -120,7 +120,7 @@ function ContactPage() {
         </div>
       </section>
 
-      {/* Form + Map */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid gap-10 lg:grid-cols-2">
         <Reveal>
           <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-card-soft">

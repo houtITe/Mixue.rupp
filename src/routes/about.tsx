@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Sparkles, Heart, Leaf, Users, Trophy, Target } from "lucide-react";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -126,8 +126,6 @@ function AboutPage() {
                 alt=""
                 loading="eager"
                 onError={(e) => {
-                  // Hide any image that fails to load (e.g. hotlink-blocked)
-                  // instead of showing a broken-image icon.
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
                 className="h-full w-full shrink-0 object-cover bg-neutral-800"
@@ -167,7 +165,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Bringing Snow King into Every Home */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
           <Reveal>
@@ -196,7 +194,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Our Culture: Mission / Vision / Values */}
+      
       <section className="bg-soft">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <SectionHeader eyebrow="Our Culture" title="What we stand for" />
@@ -253,7 +251,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      
       <section className="bg-soft">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <SectionHeader
@@ -277,7 +275,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
+      
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="rounded-[2.5rem] bg-hero p-10 sm:p-14 text-primary-foreground shadow-elegant grid gap-8 md:grid-cols-4 text-center">
           {[

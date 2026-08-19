@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import {
   subscribeToCollection,
@@ -25,7 +25,6 @@ export function useFirestoreCollection<T extends { id: string }>(
       () => setLoading(false),
     );
     return unsubscribe;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   return useMemo(
